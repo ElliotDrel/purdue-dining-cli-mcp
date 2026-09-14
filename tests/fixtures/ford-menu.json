@@ -1,0 +1,18 @@
+{
+  "Location": "Ford",
+  "Date": "9/14/2026",
+  "Meals": [
+    {
+      "Name": "Dinner",
+      "Stations": [
+        {
+          "Name": "Comfort",
+          "Items": [
+            {"ID": "ford-chicken", "Name": "Chicken Tenders", "NutritionReady": true},
+            {"ID": "ford-no-nutrition", "Name": "Chicken Soup", "NutritionReady": false}
+          ]
+        }
+      ]
+    }
+  ]
+}

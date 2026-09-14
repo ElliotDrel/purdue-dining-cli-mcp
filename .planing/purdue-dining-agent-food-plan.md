@@ -10,16 +10,17 @@ The CLI reads Purdue's live menu data. The food logging skill keeps ownership of
 
 Use Purdue Housing and Food Services' public API:
 
+- `GET https://api.hfs.purdue.edu/menus/v2/locations`
 - `GET https://api.hfs.purdue.edu/menus/v2/locations/{hall}/{YYYY-MM-DD}`
 - `GET https://api.hfs.purdue.edu/menus/v2/items/{item-id}`
 
-Use live requests. Do not add caching, configuration, or a location directory in v1.
+Use live requests. `--hall all` discovers the current Dining Courts from Purdue's location response. Reuse responses only within one CLI invocation. Do not persist a cache or add configuration in v1.
 
 ## CLI contract
 
 ```text
-purdue-dining candidates --date YYYY-MM-DD --hall HALL --query TEXT [--meal MEAL]
-purdue-dining item --id ITEM_ID
+python purdue_dining.py candidates --date YYYY-MM-DD --hall HALL|all --query TEXT [--query TEXT ...] [--meal MEAL]
+python purdue_dining.py item --id ITEM_ID
 ```
 
 Both commands write JSON to stdout and no human-formatted output.

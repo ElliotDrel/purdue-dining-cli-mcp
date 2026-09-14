@@ -1,0 +1,18 @@
+{
+  "Location": "Earhart",
+  "Date": "9/14/2026",
+  "Meals": [
+    {
+      "Name": "Lunch",
+      "Stations": [
+        {
+          "Name": "Grill",
+          "Items": [
+            {"ID": "earhart-chicken", "Name": "Grilled Chicken Breast", "NutritionReady": true},
+            {"ID": "earhart-hot-dog", "Name": "All Beef Hot Dog", "NutritionReady": true}
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "ID": "earhart-hot-dog",
+  "Name": "All Beef Hot Dog",
+  "NutritionReady": true,
+  "Ingredients": "Beef, water, salt.",
+  "Nutrition": [
+    {"Name": "Serving Size", "LabelValue": "1 hot dog", "Value": null},
+    {"Name": "Calories", "LabelValue": "160", "Value": 160},
+    {"Name": "Total Carbohydrate", "LabelValue": "2g", "Value": 2},
+    {"Name": "Protein", "LabelValue": "7g", "Value": 7},
+    {"Name": "Total fat", "LabelValue": "13g", "Value": 13}
+  ]
+}

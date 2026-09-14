@@ -21,11 +21,11 @@ The API is undocumented. Treat it as a polite, live read source and keep the cli
 ## Initial interface
 
 ```text
-purdue-dining candidates --date YYYY-MM-DD --hall HALL --meal MEAL --query TEXT
-purdue-dining item --id ITEM_ID
+python purdue_dining.py candidates --date YYYY-MM-DD --hall HALL|all --query TEXT [--query TEXT ...] [--meal MEAL]
+python purdue_dining.py item --id ITEM_ID
 ```
 
-Both commands will emit JSON only. A future MCP wrapper is out of scope until the CLI proves useful.
+Both commands emit JSON only. `--hall all` searches the live set of Purdue Dining Courts. A future MCP wrapper is out of scope until the CLI proves useful.
 
 ## Repository status
 

@@ -1,9 +1,13 @@
 import json
+import sys
 import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
 from unittest.mock import patch
+
+SCRIPT_DIR = Path(__file__).parents[1] / "scripts"
+sys.path.insert(0, str(SCRIPT_DIR))
 
 try:
     from purdue_dining import find_candidates
@@ -27,6 +31,12 @@ except ImportError:
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
+SKILL_SCRIPT = Path(__file__).parents[1] / "scripts" / "purdue_dining.py"
+
+
+class SkillLayoutTests(unittest.TestCase):
+    def test_embeds_the_menu_lookup_script_in_the_skill(self):
+        self.assertTrue(SKILL_SCRIPT.is_file(), "skill script must be at scripts/purdue_dining.py")
 
 
 class FixtureClient:

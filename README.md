@@ -1,32 +1,37 @@
 # Purdue Dining CLI-MCP
 
-An agent-facing, read-only Purdue Dining client for the food logging workflow.
+An unofficial, read-only JSON client for published Purdue Dining Court menus and nutrition.
 
-## Scope
+## What it does
 
-The first release is a private JSON CLI used by a Hermes skill. It resolves a published Purdue Dining menu item, then returns Purdue's serving size, calories, carbs, protein, fat, ingredients, allergens, and source URL for Carb Manager review.
-
-The project does not create Carb Manager entries. The existing food logging workflow remains responsible for portion estimates, macro computation, user approval, and logging.
-
-## Data source
-
-Purdue Housing and Food Services' public menu API:
-
-- `https://api.hfs.purdue.edu/menus/v2/locations`
-- `https://api.hfs.purdue.edu/menus/v2/locations/{hall}/{YYYY-MM-DD}`
-- `https://api.hfs.purdue.edu/menus/v2/items/{item-id}`
-
-The API is undocumented. Treat it as a polite, live read source and keep the client narrow.
-
-## Initial interface
+The CLI resolves a published menu item, then returns Purdue's serving size, calories, carbs, protein, fat, ingredients, and source URL. It does not write to any service or collect credentials.
 
 ```text
 python purdue_dining.py candidates --date YYYY-MM-DD --hall HALL|all --query TEXT [--query TEXT ...] [--meal MEAL]
 python purdue_dining.py item --id ITEM_ID
 ```
 
-Both commands emit JSON only. `--hall all` searches the live set of Purdue Dining Courts. A future MCP wrapper is out of scope until the CLI proves useful.
+Both commands emit JSON only. `--hall all` discovers the current Dining Courts from Purdue's locations response. Python 3.11+ is the only dependency.
 
-## Repository status
+## Data source
 
-This repository is local-only while development is underway. It has no remote yet. Connect it to the company GitHub organization after the first usable version is complete.
+The client reads Purdue Housing and Food Services' public menu API:
+
+- `https://api.hfs.purdue.edu/menus/v2/locations`
+- `https://api.hfs.purdue.edu/menus/v2/locations/{hall}/{YYYY-MM-DD}`
+- `https://api.hfs.purdue.edu/menus/v2/items/{item-id}`
+
+This is an independent project. It is not affiliated with Purdue University or Purdue Housing and Food Services. The API is undocumented, so its schema and availability can change without notice.
+
+Use the source politely. Query only the menu items needed for a meal and do not use this project for bulk collection or high-frequency polling.
+
+## Development
+
+```text
+python -m unittest discover -s tests -v
+python -m py_compile purdue_dining.py
+```
+
+## License
+
+[MIT](LICENSE)

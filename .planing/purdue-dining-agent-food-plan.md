@@ -2,7 +2,7 @@
 
 ## Decision
 
-Build a small, private JSON CLI for the existing food logging skill. Do not build an MCP in v1.
+Build a small JSON CLI for the existing food logging skill. Do not build an MCP in v1.
 
 The CLI reads Purdue's live menu data. The food logging skill keeps ownership of portion estimates, macro calculation, approval, and Carb Manager writes.
 
@@ -38,7 +38,7 @@ Errors use JSON with a stable `code` for an unknown hall, unavailable menu, empt
 3. It calls `item` and records Purdue's serving basis, raw macros, and `source_url` in `tracker_nutrition.json`.
 4. The food skill estimates only the portion multiplier.
 5. `compute_macros.py` calculates rounded item macros and totals.
-6. Elliot approves the usual Carb Manager review before any write.
+6. The user approves the usual Carb Manager review before any write.
 
 ## Build and verification
 

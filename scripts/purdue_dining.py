@@ -109,7 +109,7 @@ def _resolve_halls(locations_response, requested_hall):
 
 
 def main(argv=None, *, client=None):
-    """Run the private JSON command interface."""
+    """Run the JSON command interface."""
     parser = argparse.ArgumentParser(add_help=False)
     commands = parser.add_subparsers(dest="command", required=True)
     candidates_parser = commands.add_parser("candidates", add_help=False)

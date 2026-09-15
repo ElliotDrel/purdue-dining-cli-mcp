@@ -251,6 +251,21 @@ class CliTests(unittest.TestCase):
         self.assertEqual(exit_code, 2)
         self.assertEqual(json.loads(output.getvalue())["error"]["code"], "unknown_hall")
 
+    def test_upstream_failure_returns_a_json_error(self):
+        class OfflineClient:
+            def locations(self):
+                raise OSError("offline")
+
+        output = StringIO()
+        with redirect_stdout(output):
+            exit_code = main(
+                ["candidates", "--date", "2026-09-14", "--hall", "Earhart", "--query", "chicken"],
+                client=OfflineClient(),
+            )
+
+        self.assertEqual(exit_code, 2)
+        self.assertEqual(json.loads(output.getvalue())["error"]["code"], "source_unavailable")
+
     def test_item_command_emits_tracker_ready_json(self):
         output = StringIO()
         try:

@@ -143,6 +143,9 @@ def main(argv=None, *, client=None):
             item = normalize_item(client.item(args.id), base_url=getattr(client, "base_url", BASE_URL))
             print(json.dumps({"item": item}))
             return 0
+    except (OSError, json.JSONDecodeError) as error:
+        print(json.dumps({"error": {"code": "source_unavailable", "message": str(error)}}))
+        return 2
     except ValueError as error:
         code = "unknown_hall" if str(error).startswith("Unknown dining hall") else "nutrition_unavailable"
         print(json.dumps({"error": {"code": code, "message": str(error)}}))

@@ -6,7 +6,8 @@ from io import StringIO
 from pathlib import Path
 from unittest.mock import patch
 
-SCRIPT_DIR = Path(__file__).parents[1] / "scripts"
+SKILL_DIR = Path(__file__).parents[1] / "skills" / "purdue-dining-food"
+SCRIPT_DIR = SKILL_DIR / "scripts"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 try:
@@ -31,12 +32,14 @@ except ImportError:
 
 
 FIXTURES = Path(__file__).parent / "fixtures"
-SKILL_SCRIPT = Path(__file__).parents[1] / "scripts" / "purdue_dining.py"
+SKILL_SCRIPT = SKILL_DIR / "scripts" / "purdue_dining.py"
+SKILL_DEFINITION = SKILL_DIR / "SKILL.md"
 
 
 class SkillLayoutTests(unittest.TestCase):
-    def test_embeds_the_menu_lookup_script_in_the_skill(self):
-        self.assertTrue(SKILL_SCRIPT.is_file(), "skill script must be at scripts/purdue_dining.py")
+    def test_packages_every_runtime_file_in_one_installable_skill_folder(self):
+        self.assertTrue(SKILL_DEFINITION.is_file(), "skill definition must be at skills/purdue-dining-food/SKILL.md")
+        self.assertTrue(SKILL_SCRIPT.is_file(), "skill script must be at skills/purdue-dining-food/scripts/purdue_dining.py")
 
 
 class FixtureClient:

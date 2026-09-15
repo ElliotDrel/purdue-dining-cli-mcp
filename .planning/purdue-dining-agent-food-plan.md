@@ -2,7 +2,7 @@
 
 ## Decision
 
-Ship one standalone `purdue-dining-food` skill. Its helper script lives under `scripts/` inside the skill. Do not publish a separate CLI package or an MCP server.
+Ship one standalone `purdue-dining-food` skill folder at `skills/purdue-dining-food/`. Its helper script lives under `skills/purdue-dining-food/scripts/`. Do not publish a separate CLI package or an MCP server.
 
 The skill reads Purdue's live menu data. `food-nutrition-tracker` keeps ownership of portions, macro calculation, approval, and Carb Manager writes.
 
